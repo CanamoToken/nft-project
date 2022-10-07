@@ -19,76 +19,40 @@ const main = async () => {
   const { deployer } = await getNamedAccounts();
   const yourCollectible = await ethers.getContract("Botero", deployer);
 
-  const cbad = {
-    "description": "Esta es la escultura de Botero CBat, realizada en el año de 2007.",
-    "external_url": "https://i.ibb.co/wsYvzNG/28691a72-533b-4d36-aeb0-072dc04231ba.jpg",// <-- this can link to a page for the specific file too
-    "image": "https://i.ibb.co/wsYvzNG/28691a72-533b-4d36-aeb0-072dc04231ba.jpg",
-    "name": "CBad - Fernando Botero",
+  const leon1 = {
+    "description": "La historia está compuesta de ideas que nacieron en algunas de las mentes más brillantes, el arte y la ciencia se hacen uno para ser el testamento de la creación del hombre en su busqueda interminable de si mismo y su lugar en la naturaleza.",
+    "external_url": "https://fidubit.global",// <-- this can link to a page for the specific file too
+    "image": "https://i.ibb.co/JdgS2m0/nft1.png",
+    "name": "Galileo Galilei",
     "attributes": [
        {
-         "trait_type": "Material",
-         "value": "Bronze (patine brune)"
+         "trait_type": "Area del conocimiento",
+         "value": "Fisica, Filosofia y Matemática"
        },
        {
-         "trait_type": "Altura (cm)",
-         "value": 22
+         "trait_type": "Epoca",
+         "value": 1600
        },
        {
-        "trait_type": "Autor",
-        "value": "Fernando Botero"
-       },
-       {
-         "trait_type": "Ancho (cm)",
-         "value": 18
-       },
-       {
-         "trait_type": "Profundo (cm)",
-         "value": 65
-       },
-       {
-        "trait_type": "Material",
-        "value": "Bronze (patine brune)"
-      },
-      {
-        "trait_type": "Año",
-        "value": 2007
-      },
-      {
-        "trait_type": "Certificado",
-        "value": true
-      },
-      {
-        "trait_type": "Modelo 3D",
-        "value": 'URL al 3D'
-      },
-      {
-        "trait_type": "Imagenes Fotográficas 2022",
-        "value": 'URL al fotos de este año'
-      },
-      {
-        "trait_type": "Exhibición",
-        "value": true
-      },
-      {
-        "trait_type": "Ubicación",
-        "value": ' Bel-Air Fine Art, Ginebra'
-      },
+         "trait_type": "Salas de acceso",
+         "value": 42
+       }
     ]
   }
-  console.log("Uploading Botero Cbad...")
-  const botero1 = await ipfs.add(JSON.stringify(cbad))
+  console.log("Uploading Galileo Galilei...")
+  const uploadedleon1 = await ipfs.add(JSON.stringify(leon1))
 
-  console.log("Minting Botero Cbad with IPFS hash ("+botero1.path+")")
-  await yourCollectible.mintItem(toAddress,botero1.path,{gasLimit:10000000})
+  console.log("Minting Galileo Galilei with IPFS hash ("+uploadedleon1.path+")")
+  await yourCollectible.mintItem(toAddress,uploadedleon1.path,{gasLimit:10000000})
 
 
   await sleep(delayMS)
-/* 
+
   const leon2 = {
     "description": "La historia está compuesta de ideas que nacieron en algunas de las mentes más brillantes, el arte y la ciencia se hacen uno para ser el testamento de la creación del hombre en su busqueda interminable de si mismo y su lugar en la naturaleza.",
     "external_url": "https://fidubit.global",// <-- this can link to a page for the specific file too
     "image": "https://i.ibb.co/Lr8xpRz/nft2.png",
-    "name": "Cannabis Mage - Kusho #1",
+    "name": "Isaac Newton",
     "attributes": [
        {
          "trait_type": "Area del conocimiento",
@@ -117,7 +81,7 @@ const main = async () => {
     "description": "La historia está compuesta de ideas que nacieron en algunas de las mentes más brillantes, el arte y la ciencia se hacen uno para ser el testamento de la creación del hombre en su busqueda interminable de si mismo y su lugar en la naturaleza.",
     "external_url": "https://fidubit.global",// <-- this can link to a page for the specific file too
     "image": "https://i.ibb.co/mCqfbtn/nft3.png",
-    "name": "Cannabis Mage - Kusho #1",
+    "name": "Nicolas Copernico",
     "attributes": [
        {
          "trait_type": "Area del conocimiento",
@@ -146,7 +110,7 @@ const main = async () => {
     "description": "La historia está compuesta de ideas que nacieron en algunas de las mentes más brillantes, el arte y la ciencia se hacen uno para ser el testamento de la creación del hombre en su busqueda interminable de si mismo y su lugar en la naturaleza.",
     "external_url": "https://fidubit.global",// <-- this can link to a page for the specific file too
     "image": "https://i.ibb.co/vqn1bQd/nft4.png",
-    "name": "Cannabis Mage - Kusho #1",
+    "name": "Sistema Solar",
     "attributes": [
        {
          "trait_type": "Area del conocimiento",
@@ -176,7 +140,7 @@ const main = async () => {
     "description": "La historia está compuesta de ideas que nacieron en algunas de las mentes más brillantes, el arte y la ciencia se hacen uno para ser el testamento de la creación del hombre en su busqueda interminable de si mismo y su lugar en la naturaleza.",
     "external_url": "https://fidubit.global",// <-- this can link to a page for the specific file too
     "image": "https://i.ibb.co/H7yRZCn/nft5.png",
-    "name": "Cannabis Mage - Kusho #1",
+    "name": "Julio Verne",
     "attributes": [
        {
          "trait_type": "Area del conocimiento",
@@ -207,7 +171,7 @@ const main = async () => {
     "description": "La historia está compuesta de ideas que nacieron en algunas de las mentes más brillantes, el arte y la ciencia se hacen uno para ser el testamento de la creación del hombre en su busqueda interminable de si mismo y su lugar en la naturaleza.",
     "external_url": "https://fidubit.global",// <-- this can link to a page for the specific file too
     "image": "https://i.ibb.co/VxzYyc7/nft6.png",
-    "name": "Cannabis Mage - Kusho #1",
+    "name": "Submarino Julio Verne",
     "attributes": [
        {
          "trait_type": "Area del conocimiento",
@@ -227,7 +191,7 @@ const main = async () => {
   const uploadeleon6 = await ipfs.add(JSON.stringify(leon6))
 
   console.log("Minting Submarino Julio Verne with IPFS hash ("+uploadeleon6.path+")")
-  await yourCollectible.mintItem(toAddress,uploadeleon6.path,{gasLimit:10000000}) */
+  await yourCollectible.mintItem(toAddress,uploadeleon6.path,{gasLimit:10000000})
  /* 
 
 
@@ -401,7 +365,7 @@ const main = async () => {
 
 
   //const secondContract = await deploy("SecondContract")
-Botero
+
   // const exampleToken = await deploy("ExampleToken")
   // const examplePriceOracle = await deploy("ExamplePriceOracle")
   // const smartContractWallet = await deploy("SmartContractWallet",[exampleToken.address,examplePriceOracle.address])
